@@ -22,8 +22,7 @@ class Numbers {
     const num = this.input
     const len = this.len
     const numArr = Array.from(String(num), Number);
-    const numArrTeens = numArr.slice(1, 3);
-    const teens = parseInt(numArrTeens.join(""));
+    const teens = parseInt(numArr.slice(1, 3).join(""));
 
     const units = this.singleDigits
     const doubles = this.doubleDigits
@@ -41,13 +40,16 @@ class Numbers {
     }
     if (len == 3) {
       this.result.push(units[numArr[0]]);
-      this.result.push("hundred and");
+      this.result.push("hundred");
       if (numArr[1] >= 2) {
+        this.result.push("and");
         this.result.push(tens[numArr[1]]);
         this.result.push(units[numArr[2]]);
       } else if (numArr[1] == 1) {
+        this.result.push("and");
         this.result.push(doubles[teens - 10]);
-      } else {
+      } else if (numArr[1] == 0 && numArr[2] > 0) {
+        this.result.push("and");
         this.result.push(units[numArr[2]]);
       }
       

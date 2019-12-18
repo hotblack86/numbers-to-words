@@ -6,7 +6,9 @@ describe("Numbers class", function() {
     testNumber1 = 1;
     testNumber15 = 15;
     testNumber42 = 42;
-    testNumber123 = 123; 
+    testNumber123 = 123;
+    testNumber212 = 212;
+    testNumber900 = 900;
   })
 
   it("Should take user input on creation", function() {
@@ -60,10 +62,25 @@ describe("Numbers class", function() {
     numbers = new Numbers(testNumber123);
     numbers.toWords();
     expect(numbers.result).toEqual([
-      'one', 'hundred and', 'twenty', 'three'
+      'one', 'hundred', 'and', 'twenty', 'three'
     ]);
   })
 
+  it("#toWords Should return two hundred and twelve for 212", function() {
+    numbers = new Numbers(testNumber212);
+    numbers.toWords();
+    expect(numbers.result).toEqual([
+      'two', 'hundred', 'and', 'twelve'
+    ]);
+  })
+
+  it("#toWords Should return nine hundred for 900", function() {
+    numbers = new Numbers(testNumber900);
+    numbers.toWords();
+    expect(numbers.result).toEqual([
+      'nine', 'hundred'
+    ]);
+  })
 
 
 
